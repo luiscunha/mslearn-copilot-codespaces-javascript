@@ -102,6 +102,61 @@ a:hover {
   color: #4e567e;
 }
 
+.contactDetails {
+  align-items: end;
+  color: white;
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: minmax(260px, 1fr) minmax(280px, 1fr);
+  max-width: 900px;
+  padding: 0 2rem;
+  width: calc(100% - 4rem);
+}
+
+.contactDetails h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.75rem;
+  line-height: 1;
+  padding-top: 0;
+}
+
+.contactEyebrow,
+.contactLabel {
+  color: #d2f1e4;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.contactMessage {
+  font-size: 1rem;
+  margin: 1rem 0 0;
+}
+
+.contactLinks {
+  border-left: 1px solid rgb(255 255 255 / 35%);
+  display: grid;
+  gap: 1.25rem;
+  padding-left: 2rem;
+}
+
+.contactLinks a,
+.contactLinks p {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  gap: 0.15rem;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.contactLinks a:hover {
+  color: #d2f1e4;
+}
+
 .container {
   display: grid;
   grid-gap: 20px;
@@ -122,4 +177,53 @@ a:hover {
 img.socialIcon {
   height: 30px;
   width: 30px;
+  transition: transform 300ms ease, filter 300ms ease;
 }
+
+/* add an amazing animation to the social icons */  
+img.socialIcon:hover {
+  animation: social-icon-bounce 700ms ease-in-out infinite;
+  filter: drop-shadow(0 6px 8px rgb(78 86 126 / 35%));
+}
+
+@keyframes social-icon-bounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+
+  30% {
+    transform: translateY(-8px) rotate(-8deg) scale(1.12);
+  }
+
+  60% {
+    transform: translateY(0) rotate(8deg) scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.socialIcon {
+    transition: none;
+  }
+
+  img.socialIcon:hover {
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .contactDetails {
+    align-items: start;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .contactLinks {
+    border-left: 0;
+    border-top: 1px solid rgb(255 255 255 / 35%);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    width: 100%;
+  }
+}
+

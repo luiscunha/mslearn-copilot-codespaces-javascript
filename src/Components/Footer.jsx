@@ -28,6 +28,9 @@ import youTubeIcon from "../images/socials/youtube.svg";
 
 const Footer = (props) => {
   const {
+    address,
+    availability,
+    contactMessage,
     devDotTo,
     email,
     gitHub,
@@ -36,6 +39,7 @@ const Footer = (props) => {
     medium,
     name,
     primaryColor,
+    phone,
     twitter,
     youTube,
   } = props;
@@ -53,6 +57,37 @@ const Footer = (props) => {
         width: "100vw"
       }}
     >
+      <div className="contactDetails">
+        <div>
+          <p className="contactEyebrow">Get in touch</p>
+          <h2>Let&apos;s make something meaningful.</h2>
+          {contactMessage && <p className="contactMessage">{contactMessage}</p>}
+        </div>
+        <div className="contactLinks">
+          {address && (
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="contactLabel">Based in</span>
+              <span>{address}</span>
+            </a>
+          )}
+          {phone && (
+            <a href={`tel:${phone.replace(/[^\d+]/g, "")}`}>
+              <span className="contactLabel">Call me</span>
+              <span>{phone}</span>
+            </a>
+          )}
+          {availability && (
+            <p>
+              <span className="contactLabel">Currently</span>
+              <span>{availability}</span>
+            </p>
+          )}
+        </div>
+      </div>
       <div
         style={{
           display: "flex",
@@ -125,6 +160,9 @@ Footer.defaultProps = {
 };
 
 Footer.propTypes = {
+  address: PropTypes.string,
+  availability: PropTypes.string,
+  contactMessage: PropTypes.string,
   devDotTo: PropTypes.string,
   email: PropTypes.string,
   gitHub: PropTypes.string,
@@ -133,6 +171,7 @@ Footer.propTypes = {
   medium: PropTypes.string,
   name: PropTypes.string.isRequired,
   primaryColor: PropTypes.string,
+  phone: PropTypes.string,
   twitter: PropTypes.string,
   youTube: PropTypes.string,
 
